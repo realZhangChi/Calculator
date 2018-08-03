@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator_Gui"
         mc:Ignorable="d"
-        Title="计算器" Height="580" Width="340" ResizeMode="NoResize">
+        Title="计算器" Height="600" Width="340" ResizeMode="NoResize" Focusable="True" FocusManager.IsFocusScope="True" KeyDown="Window_KeyDown">
     <Grid Background="Aqua">
         <Grid.RowDefinitions>
-            <RowDefinition Height="139"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -21,67 +21,67 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Name="TextBlock_Expression0" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" TextWrapping="Wrap" FontSize="20" Padding="0,15,5,0" TextAlignment="Right"  Text="{Binding Path=Expression0}" VerticalAlignment="Top" Height="55" Width="334"/>
-        <TextBlock Name="TextBlock_Expression1" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" TextWrapping="NoWrap"  FontSize="30" Padding="0,15,5,0" TextAlignment="Right" Text="{Binding Path=Expression1}" VerticalAlignment="Bottom" Height="84" Width="334"/>
+        <TextBlock Name="TextBlock_Expression0" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" TextWrapping="Wrap" FontSize="20" Padding="0,20,5,0" TextAlignment="Right"  Text="{Binding Path=Expression0}" VerticalAlignment="Top" Height="60" Width="334"/>
+        <TextBlock Name="TextBlock_Expression1" Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" TextWrapping="NoWrap"  FontSize="30" Padding="0,25,5,0" TextAlignment="Right" Text="{Binding Path=Expression1}" VerticalAlignment="Bottom" Height="90" Width="334"/>
         <Viewbox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Stretch="Fill">
-            <Button Name="Button_LBracket" Content="(" FontSize="1" Padding="1" BorderThickness="0" Margin="0.05,0.05,0,0" Background="#FF665555" Click="Button_LBracket_Click"/>
+            <Button Name="Button_LBracket" Content="(" FontSize="1" Padding="1" BorderThickness="0" Margin="0.05,0.05,0,0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Fill">
-            <Button Name="Button_RBracket" Content=")" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_RBracket_Click"/>
+            <Button Name="Button_RBracket" Content=")" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="1" Grid.Column="2" Stretch="Fill">
-            <Button Name="Button_Del" Content="Del" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_Del_Click"/>
+            <Button Name="Button_Del" Content="Del" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="1" Grid.Column="3" Stretch="Fill">
-            <Button Name="Button_Divide" Content="÷" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="Button_Divide_Click"/>
+            <Button Name="Button_Divide" Content="÷" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Stretch="Fill">
-            <Button Name="Button_7" Content="7" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_7_Click"/>
+            <Button Name="Button_7" Content="7" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="1" Stretch="Fill">
-            <Button Name="Button_8" Content="8" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_8_Click"/>
+            <Button Name="Button_8" Content="8" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="2" Stretch="Fill">
-            <Button Name="Button_9" Content="9" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_9_Click"/>
+            <Button Name="Button_9" Content="9" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="3" Stretch="Fill">
-            <Button Name="Button_Multiply" Content="×" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="Button_Multiply_Click"/>
+            <Button Name="Button_Multiply" Content="×" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Stretch="Fill">
-            <Button Name="Button_4" Content="4" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_4_Click"/>
+            <Button Name="Button_4" Content="4" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="3" Grid.Column="1" Stretch="Fill">
-            <Button Name="Button_5" Content="5" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_5_Click"/>
+            <Button Name="Button_5" Content="5" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="3" Grid.Column="2" Stretch="Fill">
-            <Button Name="Button_6" Content="6" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_6_Click"/>
+            <Button Name="Button_6" Content="6" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="3" Grid.Column="3" Stretch="Fill">
-            <Button Name="Button_Minus" Content="-" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="Button_Minus_Click"/>
+            <Button Name="Button_Minus" Content="-" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Stretch="Fill">
-            <Button Name="Button_1" Content="1" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_1_Click"/>
+            <Button Name="Button_1" Content="1" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.Column="1" Stretch="Fill">
-            <Button Name="Button_2" Content="2" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_2_Click"/>
+            <Button Name="Button_2" Content="2" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.Column="2" Stretch="Fill">
-            <Button Name="Button_3" Content="3" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="Button_3_Click"/>
+            <Button Name="Button_3" Content="3" FontSize="1" Margin="0.05,0.05,0,0"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="4" Grid.Column="3" Stretch="Fill">
-            <Button Name="Button_Plus" Content="+" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="Button_Plus_Click"/>
+            <Button Name="Button_Plus" Content="+" FontSize="1" Margin="0.05,0.05,0.05,0" BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Stretch="Fill">
-            <Button Content="" FontSize="1" Margin="0.05,0.05,0,0.05"  BorderThickness="0" Background="#FF665555"/>
+            <Button Content="C" FontSize="1" Margin="0.05,0.05,0,0.05"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="5" Grid.Column="1" Stretch="Fill">
-            <Button Name="Button_0" Content="0" FontSize="1" Margin="0.05,0.05,0,0.05"  BorderThickness="0" Background="#FF665555" Click="Button_0_Click"/>
+            <Button Name="Button_0" Content="0" FontSize="1" Margin="0.05,0.05,0,0.05"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="5" Grid.Column="2" Stretch="Fill">
-            <Button Name="Button_Dot" Content="." FontSize="1" Margin="0.05,0.05,0,0.05"  BorderThickness="0" Background="#FF665555" Click="Button_Dot_Click"/>
+            <Button Name="Button_Dot" Content="." FontSize="1" Margin="0.05,0.05,0,0.05"  BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
         <Viewbox Grid.Row="5" Grid.Column="3" Stretch="Fill">
-            <Button Name="Button_Equals" Content="=" FontSize="1" Margin="0.05,0.05,0.05,0.05" BorderThickness="0" Background="#FF665555" Click="Button_Equals_Click"/>
+            <Button Name="Button_Equals" Content="=" FontSize="1" Margin="0.05,0.05,0.05,0.05" BorderThickness="0" Background="#FF665555" Click="ButtonClick"/>
         </Viewbox>
 
 

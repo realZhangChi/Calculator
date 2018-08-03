@@ -30,136 +30,34 @@ namespace Calculator_Gui
             InitializeComponent();
         }
 
-        private void Button_0_Click(object sender, RoutedEventArgs e)
+        private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            calculate.interthemExp.Add("0");
-            expressions.UiDataUpdate("0");
-        }
-
-        private void Button_Dot_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add(".");
-            expressions.UiDataUpdate(".");
-        }
-
-        private void Button_Equals_Click(object sender, RoutedEventArgs e)
-        {
-            OperClick();
-            calculate.StartCalculator();
-            expressions.Expression0 = expressions.Expression1;
-            expressions.Ex1Clear();
-            expressions.Expression1 = calculate.result.ToString();
-            expressions.EqualsClick();
-        }
-
-        private void Button_1_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("1");
-            expressions.UiDataUpdate("1");
-        }
-
-        private void Button_LBracket_Click(object sender, RoutedEventArgs e)
-        {
-            OperClick();
-            calculate.interthemExp.Add("(");
-            expressions.UiDataUpdate("0");
-        }
-
-        private void OperClick()
-        {
-            //if (calculate.temp != null)
-            //{
-            //    calculate.interthemExp.Add(calculate.temp);
-            //    calculate.temp = null;
-            //}
-        }
-
-        private void Button_RBracket_Click(object sender, RoutedEventArgs e)
-        {
-            OperClick();
-            calculate.interthemExp.Add(")");
-            expressions.UiDataUpdate("0");
-        }
-
-        private void Button_Del_Click(object sender, RoutedEventArgs e)
-        {
+            // 对输入进行验证处理
+            var b = calculate.SetInput(((Button)sender).Content.ToString());
+            // 字符可直接输入
+            if (b == 1)
+            {
+                // 判断当前字符是否为"=",若是则显示运算结果，并更新界面，显示结果的处理逻辑在Expressions类中；若不是则更新界面
+                if (((Button)sender).Content.ToString() == "=")
+                    expressions.result = calculate.Result;
+                expressions.UiDataUpdate(((Button)sender).Content.ToString());
+            }
+            // 需删除一个字符再追加当前字符
+            else if (b == 2)
+            {
+                // 若当前字符为Del，则不追加(追加null)
+                if (((Button)sender).Content.ToString() == "Del")
+                    expressions.UiDataUpdate(null, true);
+                else
+                    expressions.UiDataUpdate(((Button)sender).Content.ToString(), true);
+            }
+            else if (b == 3)
+                expressions.AllClear();
 
         }
 
-        private void Button_Divide_Click(object sender, RoutedEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            OperClick();
-            calculate.interthemExp.Add("/");
-            expressions.UiDataUpdate("÷");
-        }
-
-        private void Button_7_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("7");
-            expressions.UiDataUpdate("7");
-        }
-
-        private void Button_8_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("8");
-            expressions.UiDataUpdate("8");
-        }
-
-        private void Button_9_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("9");
-            expressions.UiDataUpdate("9");
-        }
-
-        private void Button_Multiply_Click(object sender, RoutedEventArgs e)
-        {
-            OperClick();
-            calculate.interthemExp.Add("*");
-            expressions.UiDataUpdate("×");
-        }
-
-        private void Button_4_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("4");
-            expressions.UiDataUpdate("4");
-        }
-
-        private void Button_5_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("5");
-            expressions.UiDataUpdate("5");
-        }
-
-        private void Button_6_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("6");
-            expressions.UiDataUpdate("6");
-        }
-
-        private void Button_Minus_Click(object sender, RoutedEventArgs e)
-        {
-            OperClick();
-            calculate.interthemExp.Add("-");
-            expressions.UiDataUpdate("-");
-        }
-
-        private void Button_2_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("2");
-            expressions.UiDataUpdate("2");
-        }
-
-        private void Button_3_Click(object sender, RoutedEventArgs e)
-        {
-            calculate.interthemExp.Add("3");
-            expressions.UiDataUpdate("3");
-        }
-
-        private void Button_Plus_Click(object sender, RoutedEventArgs e)
-        {
-            OperClick();
-            calculate.interthemExp.Add("+");
-            expressions.UiDataUpdate("+");
         }
     }
 }

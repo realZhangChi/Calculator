@@ -12,10 +12,22 @@ namespace Calculator
         private string expression0;
         private string expression1;
         private bool isEqualsClick = false;
+        public double result = 0;
 
         public void EqualsClick()
         {
             isEqualsClick = true;
+        }
+
+        public void UiDataUpdate(string s, bool b)
+        {
+            if (b == true)
+            {
+                if (expression1 != null && expression1.Length != 0)
+                    expression1 = expression1.Remove(expression1.Length - 1);
+                expression1 += s;
+                OnProPertyChanged("Expression1");
+            }
         }
 
         public void UiDataUpdate(string s)
@@ -23,6 +35,11 @@ namespace Calculator
             if (s == "=")
             {
                 isEqualsClick = true;
+                expression0 = expression1;
+                expression1 = result.ToString();
+                result = 0;
+                OnProPertyChanged("Expression0");
+                OnProPertyChanged("Expression1");
             }
             else if (isEqualsClick)
             {
@@ -35,6 +52,7 @@ namespace Calculator
             else
             {
                 expression1 += s;
+                OnProPertyChanged("Expression0");
                 OnProPertyChanged("Expression1");
             }
         }
@@ -52,9 +70,14 @@ namespace Calculator
             }
         }
 
-        public void Ex1Clear()
+        public void AllClear()
         {
+            expression0 = null;
             expression1 = null;
+            result = 0;
+            isEqualsClick = false;
+            OnProPertyChanged("Expression0");
+            OnProPertyChanged("Expression1");
         }
 
         public string Expression0
